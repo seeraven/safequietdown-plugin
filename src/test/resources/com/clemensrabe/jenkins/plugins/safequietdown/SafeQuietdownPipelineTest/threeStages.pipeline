@@ -1,0 +1,33 @@
+/*
+ * Declarative pipeline.
+ */
+pipeline {
+  agent none
+  stages {
+    stage("First Stage") {
+      agent any
+      steps {
+        script {
+          echo "Hello World!"
+          // sleep 5
+        }
+      }
+    }
+    stage("Second Stage") {
+      agent any
+      steps {
+        script {
+          echo "Hello World!"
+        }
+      }
+    }
+    stage("Third Stage") {
+      agent any
+      steps {
+        script {
+          echo "Hello World!"
+        }
+      }
+    }
+  }
+}

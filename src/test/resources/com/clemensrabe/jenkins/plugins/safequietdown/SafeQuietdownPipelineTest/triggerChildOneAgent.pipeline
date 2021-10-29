@@ -1,0 +1,27 @@
+/*
+ * Declarative pipeline that calls another downstream build.
+ */
+pipeline {
+  agent any
+  stages {
+    stage("First Stage") {
+      steps {
+        script {
+          echo "Hello World!"
+        }
+      }
+    }
+    stage("Trigger Other Build") {
+      steps {
+        build job: 'child'
+      }
+    }
+    stage("Third Stage") {
+      steps {
+        script {
+          echo "Hello World!"
+        }
+      }
+    }
+  }
+}

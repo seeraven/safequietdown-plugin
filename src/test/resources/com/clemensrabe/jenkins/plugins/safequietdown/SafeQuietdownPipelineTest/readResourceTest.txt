@@ -1,0 +1,2 @@
+readResource() test
+Next line
