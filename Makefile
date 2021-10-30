@@ -13,6 +13,8 @@ help:
 	@echo "Targets:"
 	@echo "  build  - Build the plugin"
 	@echo "  clean  - Clean the workspace"
+	@echo "  help   - Print this help"
+	@echo "  site   - Generate the reports"
 	@echo "  test   - Run only the test specified by the TEST variable."
 	@echo
 	@echo "Examples:"
