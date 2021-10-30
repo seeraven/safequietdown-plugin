@@ -189,6 +189,26 @@ public class QueueUtilsTest {
     }
 
     /**
+     * Test the getNumberOfBuildableQueueItems() method.
+     * @throws Exception if something goes wrong.
+     */
+    @Test
+    public void testGetNumberOfBuildableQueueItems() throws Exception {
+        assertEquals(0, QueueUtils.getNumberOfBuildableQueueItems());
+
+        // Put a project into the queue. As long as it is not running,
+        // getNumberOfBuildableQueueItems() must return 1.
+        FreeStyleProject project = jenkinsRule.createFreeStyleProject();
+        project.getBuildersList().add(new SleepBuilder(JOB_SLEEP_TIME));
+        QueueTaskFuture buildFuture = project.scheduleBuild2(QUIET_PERIOD);
+        assertEquals(1, QueueUtils.getNumberOfBuildableQueueItems());
+
+        // When it is building, getNumberOfBuildableQueueItems() must return 0.
+        buildFuture.waitForStart();
+        assertEquals(0, QueueUtils.getNumberOfBuildableQueueItems());
+    }
+
+    /**
      * Test the getNumberOfActiveBuilds() method.
      * @throws Exception if something goes wrong.
      */

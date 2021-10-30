@@ -55,8 +55,17 @@ You can also use the Jenkins CLI to activate or deactivate the safe quietdown
 mode:
 
     wget http://<JenkinsURL>/jnlpJars/jenkins-cli.jar
-    java -jar jenkins-cli.jar -s http://<JenkinsURL>/ -auth <user>:<password> safe-quietdown -a -m "Triggerd from the CLI"
+    java -jar jenkins-cli.jar -s http://<JenkinsURL>/ -auth <user>:<password> safe-quiet-down -a -m "Triggerd from the CLI"
     java -jar jenkins-cli.jar -s http://<JenkinsURL>/ -auth <user>:<password> cancel-safe-quiet-down
+
+In addition, the Jenkins CLI command `finished-safe-quiet-down` allows you
+to check whether all permitted jobs are finished:
+
+    java -jar jenkins-cli.jar -s http://<JenkinsURL>/ -auth <user>:<password> finished-safe-quiet-down && echo "You can shutdown now!"
+
+However, if you want to use this command to savely shutdown Jenkins from a
+script, you should probably ensure that about 3 attempts in a row give the
+same result. For an example script, see `examples/safeJenkinsShutdown.sh`.
 
 
 ## Contributing
