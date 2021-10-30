@@ -201,6 +201,27 @@ public final class QueueUtils {
     }
 
     /**
+     * Get the total number of buildable queue items.
+     * @return the total number of buildable queue items.
+     */
+    public static int getNumberOfBuildableQueueItems() {
+        Queue queue = Queue.getInstance();
+        queue.maintain();
+        int numberOfBuildableItems = queue.getPendingItems().size();
+        numberOfBuildableItems += queue.getBuildableItems().size();
+
+        // Actually, we don't know whether a waiting item is buildable.
+        // But we count it as buildable...
+        for (Queue.Item item : Queue.getInstance().getItems()) {
+            if (item instanceof Queue.WaitingItem) {
+                ++numberOfBuildableItems;
+            }
+        }
+
+        return numberOfBuildableItems;
+    }
+
+    /**
      * Get the total number of active builds.
      * @return the total number of active builds.
      */
