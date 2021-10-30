@@ -24,6 +24,7 @@
 
 package com.clemensrabe.jenkins.plugins.safequietdown.cli;
 
+import com.clemensrabe.jenkins.plugins.safequietdown.SafeQuietdownConfiguration
 import com.clemensrabe.jenkins.plugins.safequietdown.SafeQuietdownDecorator
 import com.clemensrabe.jenkins.plugins.safequietdown.SafeQuietdownManagementLink
 import org.junit.Test
@@ -42,6 +43,7 @@ class SafeQuietDownCommandTest extends CliTestBase {
         assert !SafeQuietdownManagementLink.get().isQuietdownActive() : "Safe quietdown mode not inactive at start"
         assert cmd("safe-quiet-down").execute().waitFor() == 0 : "Command exited wrongly"
         assert SafeQuietdownManagementLink.get().isQuietdownActive() : "Quietdown mode not activated"
+        assert !SafeQuietdownConfiguration.get().isAllowAllQueuedItems() : "AllowAllQueuedItems set"
     }
 
     /**
@@ -53,6 +55,7 @@ class SafeQuietDownCommandTest extends CliTestBase {
         assert !SafeQuietdownManagementLink.get().isQuietdownActive() : "Safe quietdown mode not inactive at start"
         assert cmd("safe-quiet-down", "-m", "Wow that is nice").execute().waitFor() == 0 : "Command exited wrongly"
         assert SafeQuietdownManagementLink.get().isQuietdownActive() : "Quietdown mode not activated"
+        assert !SafeQuietdownConfiguration.get().isAllowAllQueuedItems() : "AllowAllQueuedItems set"
         assert SafeQuietdownDecorator.getInstance().quietdownMessage == "Wow that is nice" : "Message not set"
     }
 
@@ -65,5 +68,6 @@ class SafeQuietDownCommandTest extends CliTestBase {
         assert !SafeQuietdownManagementLink.get().isQuietdownActive() : "Safe quietdown mode not inactive at start"
         assert cmd("safe-quiet-down", "-a").execute().waitFor() == 0 : "Command exited wrongly"
         assert SafeQuietdownManagementLink.get().isQuietdownActive() : "Quietdown mode not activated"
+        assert SafeQuietdownConfiguration.get().isAllowAllQueuedItems() : "AllowAllQueuedItems not set"
     }
 }
