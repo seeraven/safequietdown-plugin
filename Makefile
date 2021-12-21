@@ -99,9 +99,11 @@ release-prepare: clean
 	@rm -rf "$(TMPDIR)"
 	@echo ""
 	@echo "New release prepared!"
-	@echo "Please push the changes and tags to upstream, create the plugin with"
-	@echo "'make build' and upload the file safequietdown-plugin/target/safequietdown.hpi"
-	@echo "as a new Release on https://github.com/seeraven/safequietdown-plugin"
+	@echo "Please push the changes and tags to upstream. Then check out the"
+	@echo "latest version and create the plugin with 'make build'. Create"
+	@echo "a new Release on https://github.com/seeraven/safequietdown-plugin"
+	@echo "and add the file safequietdown-plugin/target/safequietdown.hpi"
+	@echo "to it."
 	@echo
 
 
