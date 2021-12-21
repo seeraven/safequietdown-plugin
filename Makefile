@@ -83,6 +83,7 @@ test:
 
 release-prepare: clean
 	@mkdir -p "$(M2_CACHEDIR)" "$(TMPDIR)"
+	@rm -f release.properties
 	@docker run --rm -ti \
 		-v "$(TMPDIR)":"$(HOME)" \
 		-v "$(M2_CACHEDIR)":"$(HOME)/.m2" \
@@ -96,8 +97,14 @@ release-prepare: clean
 		$(MAVEN_IMAGE) \
 		mvn -Duser.home="$(HOME)" --batch-mode release:prepare
 	@rm -rf "$(TMPDIR)"
+	@echo ""
+	@echo "New release prepared!"
+	@echo "Please push the changes and tags to upstream, create the plugin with"
+	@echo "'make build' and upload the file safequietdown-plugin/target/safequietdown.hpi"
+	@echo "as a new Release on https://github.com/seeraven/safequietdown-plugin"
+	@echo
 
 
 clean:
 	@find . -iname "*~" -exec rm -f {} \;
-	@rm -rf target
+	@rm -rf target release.properties
