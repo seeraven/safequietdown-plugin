@@ -45,6 +45,8 @@ import hudson.model.Queue;
 import hudson.model.Result;
 import hudson.model.queue.QueueTaskFuture;
 import hudson.security.GlobalMatrixAuthorizationStrategy;
+import org.jenkinsci.plugins.matrixauth.AuthorizationType;
+import org.jenkinsci.plugins.matrixauth.PermissionEntry;
 import hudson.tasks.BuildTrigger;
 
 import jenkins.model.Jenkins;
@@ -74,7 +76,7 @@ public class QueueUtilsTest {
     public void setUp() throws IOException {
         Jenkins jenkins = jenkinsRule.getInstance();
         GlobalMatrixAuthorizationStrategy authStategy = new GlobalMatrixAuthorizationStrategy();
-        authStategy.add(Jenkins.ADMINISTER, "alice");
+        authStategy.add(Jenkins.ADMINISTER, new PermissionEntry(AuthorizationType.EITHER, "alice"));
         jenkins.setAuthorizationStrategy(authStategy);
         jenkins.setSecurityRealm(jenkinsRule.createDummySecurityRealm());
         jenkins.setNumExecutors(NUM_EXECUTORS);
