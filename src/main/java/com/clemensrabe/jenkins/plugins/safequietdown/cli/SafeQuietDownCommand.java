@@ -68,10 +68,9 @@ public class SafeQuietDownCommand extends CLICommand {
     /**
      * Executes the command.
      * @return return code of this command.
-     * @throws Exception on errors.
      */
     @Override
-    protected int run() throws Exception {
+    protected int run() {
         SafeQuietdownManagementLink management = SafeQuietdownManagementLink.get();
         Jenkins.get().checkPermission(management.getRequiredPermission());
 
