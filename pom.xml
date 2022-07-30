@@ -14,18 +14,19 @@
     <properties>
         <revision>1.4</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.289.3</jenkins.version>
+        <jenkins.version>2.332.4</jenkins.version>
         <java.level>8</java.level>
         <gitHubRepo>seeraven/${project.artifactId}-plugin</gitHubRepo>
     </properties>
     <name>Safe Quiet Down Plugin</name>
     <description>This plugin allows administrators to prevent new jobs from executing while allowing already running jobs (including downstream jobs and all pipeline steps) to finish.</description>
     <url>https://github.com/seeraven/${project.artifactId}-plugin</url>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.289.x</artifactId>
+                <artifactId>bom-2.332.x</artifactId>
                 <version>1500.ve4d05cd32975</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -39,6 +40,7 @@
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
+
     <developers>
         <developer>
             <id>bhacker</id>
@@ -60,6 +62,7 @@
             <url>https://repo.jenkins-ci.org/public/</url>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>repo.jenkins-ci.org</id>

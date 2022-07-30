@@ -5,7 +5,7 @@
 M2_CACHEDIR ?= $(abspath $(HOME)/.m2)
 TMPDIR := $(shell mktemp -u)
 SRCDIR = $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
-MAVEN_IMAGE = maven:3.8.6-jdk-8
+MAVEN_IMAGE = maven:3.8.6-jdk-11
 
 help:
 	@echo "Makefile for Development of SafeQuietdown Plugin"
@@ -78,6 +78,27 @@ test:
 		-w /usr/src/mymaven \
 		$(MAVEN_IMAGE) \
 		mvn -Duser.home="$(HOME)" -Dtest=$(TEST) test
+	@rm -rf "$(TMPDIR)"
+
+
+# Does not work! Connection to localhost:8080 only available from within the docker container!
+run:
+	@mkdir -p "$(M2_CACHEDIR)" "$(TMPDIR)"
+	@docker run --rm -ti \
+		-v "$(TMPDIR)":"$(HOME)" \
+		-v "$(M2_CACHEDIR)":"$(HOME)/.m2" \
+		-v "$(SRCDIR)":/usr/src/mymaven \
+		-v "$(HOME)/.gitconfig":"$(HOME)/.gitconfig" \
+		-u $(shell id -u):$(shell id -g) \
+		-e MAVEN_CONFIG="$(HOME)/.m2" \
+		-e HOME="$(HOME)" \
+		-w /usr/src/mymaven \
+		-p 127.0.0.1:8080:8080 \
+		$(MAVEN_IMAGE) \
+		mvn -Duser.home="$(HOME)" hpi:run \
+		-Djetty.port=8080 \
+		-Dmaven.compiler.showDeprecation=true \
+		-Dmaven.compiler.showWarnings=true
 	@rm -rf "$(TMPDIR)"
 
 
