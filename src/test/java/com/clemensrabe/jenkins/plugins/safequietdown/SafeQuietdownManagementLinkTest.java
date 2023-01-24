@@ -45,14 +45,14 @@ public class SafeQuietdownManagementLinkTest {
 
     /** XPath to the icon on the manage page. */
     private static final String ACTIVATION_IMG_XPATH = "//a[@href='safequietdown']"
-        + "/img[contains(@src,'system-log-out.svg')]";
+        + "/div/img[contains(@src,'system-log-out.svg')]";
 
     /** XPath to the link. */
     private static final String ACTIVATION_LINK_XPATH = "//a[@href='safequietdown']";
 
     /** XPath to the icon on the manage page. */
     private static final String CANCEL_IMG_XPATH = "//a[@href='cancelsafequietdown']"
-        + "/img[contains(@src,'system-log-out.svg')]";
+        + "/div/img[contains(@src,'system-log-out.svg')]";
 
     /** XPath to the link. */
     private static final String CANCEL_LINK_XPATH = "//a[@href='cancelsafequietdown']";
