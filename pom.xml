@@ -14,8 +14,7 @@
     <properties>
         <revision>1.5</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.332.4</jenkins.version>
-        <java.level>8</java.level>
+        <jenkins.version>2.361.4</jenkins.version>
         <gitHubRepo>seeraven/${project.artifactId}-plugin</gitHubRepo>
     </properties>
     <name>Safe Quiet Down Plugin</name>
