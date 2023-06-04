@@ -97,6 +97,28 @@ commands:
         TEST=com.clemensrabe.jenkins.plugins.safequietdown.SafeQuietdownConfigurationTest#testAllowAllQueuedItemsSetting make test
 
 
+## Publish a new Release
+
+To publish a new release, perform the following steps:
+
+    # Switch to a new branch named after the upcoming version
+    $ git branch releases/v<major>.<minor>
+    $ git checkout releases/v<major>.<minor>
+
+    # Perform the version switch
+    $ make release-prepare
+
+    # Delete the temporary files
+    rm -rf \? pom.xml.releaseBackup
+
+    # Push the commits and tags to the repository
+    git push --set-upstream origin releases/v<major>.<minor>
+
+Then go ahead and create a merge request. Once it is merged to master, open
+the [Releases page] and _Draft a new release_. Here, select the version tag,
+enter the description and attach the file `target/safequietdown.hpi`.
+
+
 ## LICENSE
 
 Licensed under MIT, see the [LICENSE] file.
