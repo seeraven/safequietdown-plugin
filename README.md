@@ -4,9 +4,8 @@
 
 This plugin lets you put Jenkins in quiet-down mode while still allowing any
 downstream jobs of currently running jobs to complete. It is highly inspired
-by the [lenient-shutdown-plugin](https://github.com/jenkinsci/lenient-shutdown-plugin)
-but treats pipelines like any other job and does not provide functionality to
-put down individual slaves.
+by the [lenient-shutdown-plugin] but treats pipelines like any other job and
+does not provide functionality to put down individual slaves.
 
 
 ## Getting started
@@ -14,8 +13,7 @@ put down individual slaves.
 ### Installation of the Plugin
 
 To install the plugin, download the latest release from the
-[Releases page](https://github.com/seeraven/safequietdown-plugin/releases) and
-install the plugin:
+[Releases page] and install the plugin:
 
   - Open the `Manage Jenkins` page.
   - Open the `Manage Plugins` page.
@@ -65,7 +63,7 @@ to check whether all permitted jobs are finished:
 
 However, if you want to use this command to savely shutdown Jenkins from a
 script, you should probably ensure that about 3 attempts in a row give the
-same result. For an example script, see `examples/safeJenkinsShutdown.sh`.
+same result. For an example script, see [examples/safeJenkinsShutdown.sh].
 
 
 ## Contributing
@@ -99,6 +97,34 @@ commands:
         TEST=com.clemensrabe.jenkins.plugins.safequietdown.SafeQuietdownConfigurationTest#testAllowAllQueuedItemsSetting make test
 
 
+## Publish a new Release
+
+To publish a new release, perform the following steps:
+
+    # Switch to a new branch named after the upcoming version
+    $ git branch releases/v<major>.<minor>
+    $ git checkout releases/v<major>.<minor>
+
+    # Perform the version switch
+    $ make release-prepare
+
+    # Delete the temporary files
+    rm -rf \? pom.xml.releaseBackup
+
+    # Push the commits and tags to the repository
+    git push --set-upstream origin releases/v<major>.<minor>
+
+Then go ahead and create a merge request. Once it is merged to master, open
+the [Releases page] and _Draft a new release_. Here, select the version tag,
+enter the description and attach the file `target/safequietdown.hpi`.
+
+
 ## LICENSE
 
-Licensed under MIT, see [LICENSE](LICENSE.md)
+Licensed under MIT, see the [LICENSE] file.
+
+
+[lenient-shutdown-plugin]: https://github.com/jenkinsci/lenient-shutdown-plugin
+[Releases page]: https://github.com/seeraven/safequietdown-plugin/releases
+[examples/safeJenkinsShutdown.sh]: examples/safeJenkinsShutdown.sh
+[LICENSE]: LICENSE.md
