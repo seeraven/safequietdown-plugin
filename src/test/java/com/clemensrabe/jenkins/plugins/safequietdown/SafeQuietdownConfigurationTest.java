@@ -24,9 +24,9 @@
 
 package com.clemensrabe.jenkins.plugins.safequietdown;
 
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
-import com.gargoylesoftware.htmlunit.html.HtmlCheckBoxInput;
+import org.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlTextInput;
+import org.htmlunit.html.HtmlCheckBoxInput;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
