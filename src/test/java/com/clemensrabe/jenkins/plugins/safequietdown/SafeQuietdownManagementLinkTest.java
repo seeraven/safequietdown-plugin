@@ -24,7 +24,7 @@
 
 package com.clemensrabe.jenkins.plugins.safequietdown;
 
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.htmlunit.html.HtmlPage;
 
 import java.util.HashSet;
 import java.util.Set;
