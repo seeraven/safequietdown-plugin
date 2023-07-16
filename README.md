@@ -119,6 +119,23 @@ the [Releases page] and _Draft a new release_. Here, select the version tag,
 enter the description and attach the file `target/safequietdown.hpi`.
 
 
+## Common Update Steps
+
+If building a new pull request of dependabot fails, you might need to change
+the code or update the Jenkins version to build against.
+
+### Dependency to a Newer Jenkins Version
+
+If you get an error message like
+
+    Failed to execute goal org.jenkins-ci.tools:maven-hpi-plugin:3.47:validate-hpi (default-validate-hpi) on project safequietdown: Dependency org.jenkins-ci.plugins:parameterized-trigger:jar:2.46 requires Jenkins 2.387.3 or higher.
+
+you have to update the `jenkins.version` in the `pom.xml` to use one of the
+[currently recommended jenkins versions]. As this needs to be in sync
+with the [bom], you should first follow the steps under the `Usage` section
+on the [bom] project to update the jenkins version and the latest bom.
+
+
 ## LICENSE
 
 Licensed under MIT, see the [LICENSE] file.
@@ -127,4 +144,6 @@ Licensed under MIT, see the [LICENSE] file.
 [lenient-shutdown-plugin]: https://github.com/jenkinsci/lenient-shutdown-plugin
 [Releases page]: https://github.com/seeraven/safequietdown-plugin/releases
 [examples/safeJenkinsShutdown.sh]: examples/safeJenkinsShutdown.sh
+[currently recommended jenkins versions]: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/
+[bom]: https://github.com/jenkinsci/bom
 [LICENSE]: LICENSE.md
