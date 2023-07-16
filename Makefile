@@ -144,6 +144,22 @@ release-prepare: clean
 	@echo
 
 
+versions-update-parent:
+	@mkdir -p "$(M2_CACHEDIR)" "$(TMPDIR)"
+	@docker run --rm -ti \
+		-v "$(TMPDIR)":"$(HOME)" \
+		-v "$(M2_CACHEDIR)":"$(HOME)/.m2" \
+		-v "$(SRCDIR)":/usr/src/mymaven \
+		-v "$(HOME)/.gitconfig":"$(HOME)/.gitconfig" \
+		-u $(shell id -u):$(shell id -g) \
+		-e MAVEN_CONFIG="$(HOME)/.m2" \
+		-e HOME="$(HOME)" \
+		-w /usr/src/mymaven \
+		$(MAVEN_IMAGE) \
+		mvn -Duser.home="$(HOME)" versions:update-parent
+	@rm -rf "$(TMPDIR)"
+
+
 clean:
 	@find . -iname "*~" -exec rm -f {} \;
 	@rm -rf target release.properties
