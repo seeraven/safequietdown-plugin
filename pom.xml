@@ -14,7 +14,7 @@
     <properties>
         <revision>1.5</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.387.3</jenkins.version>
+        <jenkins.version>2.426.3</jenkins.version>
         <gitHubRepo>seeraven/${project.artifactId}-plugin</gitHubRepo>
     </properties>
     <name>Safe Quiet Down Plugin</name>
@@ -25,8 +25,8 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.387.x</artifactId>
-                <version>2543.vfb_1a_5fb_9496d</version>
+                <artifactId>bom-2.426.x</artifactId>
+                <version>3120.v4d898e1e9fc4</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -142,7 +142,7 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>parameterized-trigger</artifactId>
-            <version>787.v665fcf2a_830b_</version>
+            <version>806.vf6fff3e28c3e</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
