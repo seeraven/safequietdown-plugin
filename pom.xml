@@ -14,7 +14,7 @@
     <properties>
         <revision>1.5</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.426.3</jenkins.version>
+        <jenkins.version>2.462.3</jenkins.version>
         <gitHubRepo>seeraven/${project.artifactId}-plugin</gitHubRepo>
     </properties>
     <name>Safe Quiet Down Plugin</name>
@@ -25,8 +25,8 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.426.x</artifactId>
-                <version>3208.vb_21177d4b_cd9</version>
+                <artifactId>bom-2.462.x</artifactId>
+                <version>3559.vb_5b_81183b_d23</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
