@@ -5,7 +5,7 @@
 M2_CACHEDIR ?= $(abspath $(HOME)/.m2)
 TMPDIR := $(shell mktemp -u)
 SRCDIR = $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
-MAVEN_IMAGE = maven:3.8.6-jdk-11
+MAVEN_IMAGE = maven:3.9.9-eclipse-temurin-17
 
 help:
 	@echo "Makefile for Development of SafeQuietdown Plugin"

@@ -135,6 +135,14 @@ you have to update the `jenkins.version` in the `pom.xml` to use one of the
 with the [bom], you should first follow the steps under the `Usage` section
 on the [bom] project to update the jenkins version and the latest bom.
 
+### Upgrade to new JDK
+
+- Adjust the `Makefile` to use a new docker image.
+- Adjust the `.github/workflows/build_and_test.yml` file to use the new JDK version.
+- Adjust the [bom] version as well, see
+  https://repo.jenkins-ci.org/public/io/jenkins/tools/bom for available
+  versions.
+
 
 ## LICENSE
 
